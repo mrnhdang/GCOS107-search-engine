@@ -6,17 +6,20 @@ import numpy as np
 from underthesea import word_tokenize
 
 class SearchEngine():
- def search(query):
-  documents = [
-  'Xử lý ngôn ngữ tự nhiên (natural language processing) là một nhánh cực kỳ quan trọng của trí tuệ nhân tạo (AI), là giao điểm của ngôn ngữ học và khoa học máy tính. NLP làm nhiệm vụ xử lý và phân tích một lượng lớn dữ liệu ngôn ngữ tự nhiên để bắt chước các tương tác giữa con người theo cách giống con người.',
-  'Khai phá dữ liệu (data mining) Là quá trình tính toán để tìm ra các mẫu trong các bộ dữ liệu lớn liên quan đến các phương pháp tại giao điểm của máy học, thống kê và các hệ thống cơ sở dữ liệu. Đây là một lĩnh vực liên ngành của khoa học máy tính.',
-  'Truy hồi thông tin (information retrieval) là hoạt động thu thập các nguồn thông tin liên quan đến một thông tin cần tìm kiếm, có thể dựa trên dữ liệu và trên việc đánh chỉ mục toàn văn.',
-  ]
+ def search(query, web_collection):
+  documents = []
+  urls= []
 
-  # # câu query
-  # query = "khai phá"
+  for data in web_collection.find():
+    print(data)
+    content = data.get('content')
+    url = data.get('url')
+    if url:
+      urls.append(url)
+    if content:
+      documents.append(content)
 
-
+  print(documents)
   # Loại bỏ các dấu câu trong Tập dữ liệu
   documents = [re.sub('\W+',' ', doc) for doc in documents] 
 
@@ -138,7 +141,8 @@ class SearchEngine():
   arr = []
   # In ra danh sách các tài liệu cùng với điểm số TF-IDF của chúng
   for doc_idx, score in sorted_documents:
-      arr.append(documents[doc_idx])
+      if urls[doc_idx] not in arr:
+        arr.append(urls[doc_idx])
       print(f"Tài liệu {doc_idx} có điểm số TF-IDF: {score}")
 
   return arr
