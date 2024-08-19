@@ -10,6 +10,7 @@ class SearchEngine():
   documents = []
   urls= []
 
+  # get document from db
   for data in web_collection.find():
     print(data)
     content = data.get('content')
