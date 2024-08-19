@@ -23,7 +23,7 @@ const navItems = [
 const Layout = ({ children }: Props) => {
   const router = useRouter();
   return (
-    <Container>
+    <div>
       <AppBar component="nav">
         <Toolbar>
           <IconButton
@@ -55,11 +55,11 @@ const Layout = ({ children }: Props) => {
         </Toolbar>
       </AppBar>
 
-      <Box>
+      <Box sx={{ padding: "10px" }}>
         <Toolbar />
         {children}
       </Box>
-    </Container>
+    </div>
   );
 };
 

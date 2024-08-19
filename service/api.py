@@ -19,16 +19,16 @@ CORS(app)
 
 @app.route('/web/add', methods=['POST'])
 def add():
-        url = request.json.get('url')
+        url = request.json
         if not url:
-            return jsonify({'error': 'Query is missing'})
+            return jsonify({'error': 'Url is missing'})
         WebCrawler.insert(url, web_collection)
         return make_response("success", 201)
 
 
 @app.route('/', methods=['GET'])
 def search():
-        query = request.json.get('query')
+        query = request.args.get('query', default='', type=str)
         if not query:
             return jsonify({'error': 'Query is missing'})
         
