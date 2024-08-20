@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React from "react";
-import EngineeringOutlinedIcon from '@mui/icons-material/EngineeringOutlined';
+import EngineeringOutlinedIcon from "@mui/icons-material/EngineeringOutlined";
 
 type Props = {
   children?: any;
@@ -42,7 +42,7 @@ const Layout = ({ children }: Props) => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            group 2
+            GROUP 2
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item, index) => (

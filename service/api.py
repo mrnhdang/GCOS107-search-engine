@@ -27,7 +27,7 @@ def add():
         except Exception as e:
             return make_response(e, 400)
 
-        return make_response("success", 201)
+        return make_response("Crawl data successfully!!", 201)
 
 
 @app.route('/', methods=['GET'])

@@ -69,17 +69,19 @@ const Search = () => {
 
       <Paper
         elevation={3}
-        className="flex flex-col items-center align-middle p-2 h-screen"
+        className="flex flex-col items-center align-middle p-2 min-h-screen"
       >
         {uiState.isLoading ? (
           <CircularProgress />
         ) : (
           <Box sx={{ borderRadius: "10px", boxShadow: "1px solid black" }}>
             {url.map((link) => (
-              <Card sx={{ mb: 2}} key={link}>
+              <Card sx={{ mb: 2 }} key={link}>
                 <CardContent>
                   <Typography variant="body1" color={"blue"}>
-                    <Link className="text-blue underline text-xs" href={link}>{link}</Link>
+                    <Link className="text-blue underline text-xs" href={link}>
+                      {link}
+                    </Link>
                   </Typography>
                 </CardContent>
               </Card>
