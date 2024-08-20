@@ -23,10 +23,13 @@ class WebCrawler:
 
               # # Output the clean text
               # print(clean_text)
-              print(base)
               payload = { 'url': base, 'content': clean_text  }
-              exist_data = web_collection.find(payload)
-              if exist_data is None:
+
+              # nếu ko có data thì hàm find sẽ trả về con trỏ
+              exist_data = web_collection.count_documents(payload)
+              
+              print(exist_data)
+              if exist_data == 0:
                web_collection.insert_one(payload)
               
               # Lấy toàn bộ các thẻ <a> là các thẻ chứa hyper-links (href) của webpage đang đứng

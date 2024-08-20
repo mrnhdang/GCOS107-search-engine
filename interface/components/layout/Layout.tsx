@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React from "react";
+import EngineeringOutlinedIcon from '@mui/icons-material/EngineeringOutlined';
 
 type Props = {
   children?: any;
@@ -22,6 +23,7 @@ const navItems = [
 
 const Layout = ({ children }: Props) => {
   const router = useRouter();
+
   return (
     <div>
       <AppBar component="nav">
@@ -30,9 +32,10 @@ const Layout = ({ children }: Props) => {
             color="inherit"
             aria-label="open drawer"
             edge="start"
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{ mr: 2 }}
+            onClick={() => router.push("/")}
           >
-            Group 2
+            <EngineeringOutlinedIcon className="w-10 h-10" />
           </IconButton>
           <Typography
             variant="h6"

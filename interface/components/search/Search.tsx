@@ -10,6 +10,7 @@ import {
   InputAdornment,
   InputLabel,
   OutlinedInput,
+  Paper,
   Typography,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
@@ -41,7 +42,7 @@ const Search = () => {
   };
 
   return (
-    <div className="w-screen">
+    <div className="space-y-2">
       <div className="flex justify-start items-center align-middle space-x-4 ml-1">
         <h1 className="text-2xl font-bold">Nhập câu truy vấn: </h1>
         <FormControl className="w-96" variant="outlined">
@@ -66,24 +67,26 @@ const Search = () => {
         </FormControl>
       </div>
 
-      <div className="flex flex-col justify-between items-center">
-        {" "}
+      <Paper
+        elevation={3}
+        className="flex flex-col items-center align-middle p-2 h-screen"
+      >
         {uiState.isLoading ? (
           <CircularProgress />
         ) : (
-          <Box>
+          <Box sx={{ borderRadius: "10px", boxShadow: "1px solid black" }}>
             {url.map((link) => (
-              <Card sx={{ mb: 2, maxWidth: "100%" }} key={link}>
+              <Card sx={{ mb: 2}} key={link}>
                 <CardContent>
-                  <Typography variant="body1">
-                    <Link href={link}>{link}</Link>
+                  <Typography variant="body1" color={"blue"}>
+                    <Link className="text-blue underline text-xs" href={link}>{link}</Link>
                   </Typography>
                 </CardContent>
               </Card>
             ))}
           </Box>
         )}
-      </div>
+      </Paper>
     </div>
   );
 };
