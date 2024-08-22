@@ -5,6 +5,7 @@ import {
   Card,
   CardContent,
   CircularProgress,
+  Divider,
   FormControl,
   IconButton,
   InputAdornment,
@@ -76,15 +77,16 @@ const Search = () => {
         ) : (
           <Box sx={{ borderRadius: "10px", boxShadow: "1px solid black" }}>
             {url.map((link) => (
-              <Card sx={{ mb: 2 }} key={link}>
-                <CardContent>
-                  <Typography variant="body1" color={"blue"}>
-                    <Link className="text-blue underline text-xs" href={link}>
-                      {link}
-                    </Link>
-                  </Typography>
-                </CardContent>
-              </Card>
+              <div className="p-2" key={link}>
+                {/* <CardContent> */}
+                <Typography variant="body1" color={"blue"}>
+                  <Link className="text-blue underline text-xl" href={link}>
+                    {link}
+                  </Link>
+                </Typography>
+                {/* </CardContent> */}
+                <Divider />
+              </div>
             ))}
           </Box>
         )}

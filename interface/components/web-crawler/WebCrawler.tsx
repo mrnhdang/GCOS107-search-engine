@@ -15,6 +15,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 const WebCrawler = () => {
   const [query, setQuery] = useState<string>("");
@@ -56,7 +57,7 @@ const WebCrawler = () => {
   useEffect(() => {
     query && setUiState({ isLoading: false });
   }, [query]);
-  
+
   return (
     <div className="w-screen space-y-2">
       <div className="flex justify-start items-center align-middle space-x-4 ml-1">
@@ -83,21 +84,25 @@ const WebCrawler = () => {
           />
         </FormControl>
         {url?.length > 0 && (
-          <Button className="flex" onClick={handleCrawl}>
+          <Button variant="outlined" onClick={handleCrawl}>
             Crawl
           </Button>
         )}
       </div>
       <Paper
         elevation={3}
-        className="flex flex-col items-center align-middle p-2 h-screen"
+        className="flex flex-col items-center align-middle p-2 h-screen gap-3"
       >
         {url?.map((link, index) => (
-          <div key={index} className="flex items-center space-x-1">
-            <h1>{link}</h1>
-            <IconButton onClick={() => clearUrl(index)}>
-              <ClearIcon />
-            </IconButton>
+          <div key={index} className="flex space-x-1 items-center">
+            <div className="truncate flex items-center space-x-1 h-[80px] w-[400px] p-1 font-bold rounded-xl ring-1 ring-gray-200 text-center shadow-md hover:scale-105 duration-200">
+              {link}
+            </div>
+            <div>
+              <IconButton color="warning" onClick={() => clearUrl(index)}>
+                <RemoveIcon />
+              </IconButton>
+            </div>
           </div>
         ))}
 

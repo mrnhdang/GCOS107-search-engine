@@ -8,7 +8,7 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import EngineeringOutlinedIcon from "@mui/icons-material/EngineeringOutlined";
 
@@ -23,6 +23,7 @@ const navItems = [
 
 const Layout = ({ children }: Props) => {
   const router = useRouter();
+  const pathname = usePathname();
 
   return (
     <div>
@@ -45,15 +46,22 @@ const Layout = ({ children }: Props) => {
             GROUP 2
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {navItems.map((item, index) => (
-              <Button
-                key={index}
-                sx={{ color: "#fff" }}
-                onClick={() => router.push(item.url)}
-              >
-                {item.label}
-              </Button>
-            ))}
+            <Button
+              variant="outlined"
+              className="shadow-xl bg-sky-500 text-white font-bold w-[100px]"
+              onClick={() => router.push("/search")}
+              hidden={pathname === "/" || pathname === "/search"}
+            >
+              SEARCH
+            </Button>
+            <Button
+              variant="outlined"
+              className="shadow-xl bg-green-400 text-white font-bold w-[100px]"
+              onClick={() => router.push("/web-crawler")}
+              hidden={pathname === "/" || pathname === "/web-crawler"}
+            >
+              CRAWL
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>
