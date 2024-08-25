@@ -70,24 +70,27 @@ const Search = () => {
 
       <Paper
         elevation={3}
-        className="flex flex-col items-center align-middle p-2 min-h-screen"
+        className="truncate flex flex-col items-center align-middle p-2 min-w-fit min-h-screen"
       >
         {uiState.isLoading ? (
           <CircularProgress />
         ) : (
-          <Box sx={{ borderRadius: "10px", boxShadow: "1px solid black" }}>
-            {url.map((link) => (
-              <div className="p-2" key={link}>
-                {/* <CardContent> */}
-                <Typography variant="body1" color={"blue"}>
-                  <Link className="text-blue underline text-xl" href={link}>
+          <Box
+            sx={{ borderRadius: "10px", boxShadow: "1px solid black", p: 2 }}
+          >
+            {url.length > 0 &&
+              url?.map((link) => (
+                <div className="p-2 truncate max-w-[2000px]" key={link}>
+                  {/* <CardContent> */}
+                  {/* <Typography variant="body1" color={"blue"}> */}
+                  <a className="text-sky-600 underline text-xl" href={link}>
                     {link}
-                  </Link>
-                </Typography>
-                {/* </CardContent> */}
-                <Divider />
-              </div>
-            ))}
+                  </a>
+                  {/* </Typography> */}
+                  {/* </CardContent> */}
+                  <Divider />
+                </div>
+              ))}
           </Box>
         )}
       </Paper>

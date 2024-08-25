@@ -144,6 +144,6 @@ class SearchEngine():
   for doc_idx, score in sorted_documents:
       if urls[doc_idx] not in arr:
         arr.append(urls[doc_idx])
-      print(f"Tài liệu {doc_idx} có điểm số TF-IDF: {score}")
+      print(f"Tài liệu {urls[doc_idx]} có điểm số TF-IDF: {score}")
 
   return arr
