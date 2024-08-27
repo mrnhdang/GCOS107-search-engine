@@ -7,7 +7,7 @@ from flask_cors import CORS
 import pymongo
 
 # Connect to mongodb
-mongodb = pymongo.MongoClient("mongodb+srv://dang:Dang%401234@productdb.ajc08j8.mongodb.net/?retryWrites=true&w=majority&appName=productDB")
+mongodb = pymongo.MongoClient("MONGODB_DRIVER_URL")
 database = mongodb["productDB"]
 web_collection = database["web"]
 
